@@ -10,7 +10,6 @@
     "start": "node dist/main.js",
     "build": "tsc",
     "start:prod": "npm run build && node dist/main.js",
-    "postinstall": "npm install",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
