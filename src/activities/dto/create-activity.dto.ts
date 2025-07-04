@@ -1,4 +1,5 @@
-import { IsDate, IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
+import { Type } from "class-transformer";
+import { IsBoolean, IsDate, IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
 
 export class CreateActivityDto {
     @IsString()
@@ -10,10 +11,15 @@ export class CreateActivityDto {
     description?: string;
     
     @IsDate()
-    @IsNotEmpty()
-    date!: Date;
+    @Type(() => Date)
+    @IsOptional()
+    date?: Date;
 
     @IsNumber()
     @IsNotEmpty()
     duration!: number;
+
+    @IsBoolean()
+    @IsOptional()
+    completed?: boolean;
 }

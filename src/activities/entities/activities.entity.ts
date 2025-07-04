@@ -9,7 +9,10 @@ export class Activity {
     @Prop()
     title!: string;
 
-    @Prop() description?: string;
+    @Prop() 
+    description?: string;
+    
+    @Prop({type: Date, default: Date.now})
     date!: Date;
 
     @Prop()

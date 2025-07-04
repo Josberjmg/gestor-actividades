@@ -9,11 +9,12 @@ import { Request } from 'express';
 @Controller('activities')
 @UseGuards(AuthGuard)
 export class ActivitiesController {
-    constructor(private readonly activitiesService: ActivitiesService) {}
+    constructor(private readonly activitiesService: ActivitiesService) { }
 
     @Post()
     create(@Body() createActivityDto: CreateActivityDto, @Req() request: Request): Promise<Activity> {
-        const userId = request["user"].userId;
+        console.log('Controlador recibió:', createActivityDto);
+        const userId = request["user"].id;
         return this.activitiesService.create(createActivityDto, userId);
     }
 
@@ -28,9 +29,12 @@ export class ActivitiesController {
         const userId = request["user"].id;
         return this.activitiesService.findOne(id, userId);
     }
-
     @Put(':id')
-    update(@Param('id') id: string, @Body() updateActivityDto: UpdateActivityDto, @Req() request: Request): Promise<Activity> {
+    async update(
+        @Param('id') id: string,
+        @Body() updateActivityDto: UpdateActivityDto,
+        @Req() request: Request
+    ): Promise<Activity> {
         const userId = request["user"].id;
         return this.activitiesService.update(id, updateActivityDto, userId);
     }

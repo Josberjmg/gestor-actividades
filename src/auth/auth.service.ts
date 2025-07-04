@@ -24,9 +24,13 @@ export class AuthService {
       throw new UnauthorizedException("Credentials not valid");
     }
 
-    const token = await this.jwtService.signAsync({ email, id: user["_id"] }, {secret: process.env.JWT_SECRET})
+    const token = await this.jwtService.signAsync(
+      { email, id: user["_id"] }, 
+      {secret: process.env.JWT_SECRET}
+    );
     return {
-      user,
+      name:user.name,
+      email:user.email,
       token,
     }
   }

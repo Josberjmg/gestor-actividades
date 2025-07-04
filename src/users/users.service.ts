@@ -19,7 +19,7 @@ export class UsersService {
   }
 
   async findOne(id: string): Promise<User | null> {
-    return this.userModel.findOne({id});
+    return this.userModel.findOne({_id: id});
   }
 
   async findOneByEmail(email: string): Promise<User | null> {
@@ -30,7 +30,7 @@ export class UsersService {
       const updatedUser = await this.userModel.findByIdAndUpdate(id, updateUserDto, { new: true });
     
       if (!updatedUser) {
-          throw new Error('User not update');
+          throw new NotFoundException('User not update');
       }
   
       return updatedUser; 
@@ -41,7 +41,7 @@ export class UsersService {
               throw new NotFoundException("User not found!");
           }
       
-          const deleted = await this.userModel.findOneAndDelete({id});
+          const deleted = await this.userModel.findOneAndDelete({_id: id});
           if( !deleted ){
               throw new ConflictException("User not deleted!");
           }
