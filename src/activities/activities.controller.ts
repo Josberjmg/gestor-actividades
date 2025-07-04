@@ -3,7 +3,7 @@ import { ActivitiesService } from './activities.service';
 import { CreateActivityDto } from './dto/create-activity.dto';
 import { Activity } from './entities/activities.entity';
 import { UpdateActivityDto } from './dto/update-activity.dto';
-import { AuthGuard } from 'src/auth/guards/auth.guard';
+import { AuthGuard } from '../auth/guards/auth.guard';
 import { Request } from 'express';
 
 @Controller('activities')

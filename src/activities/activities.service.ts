@@ -4,7 +4,7 @@ import { Model, Types } from 'mongoose';
 import { CreateActivityDto } from './dto/create-activity.dto';
 import { Activity } from './entities/activities.entity';
 import { UpdateActivityDto } from './dto/update-activity.dto';
-import { User } from 'src/users/entities/user.entity';
+import { User } from '../users/entities/user.entity';
 import { console } from 'inspector';
 
 @Injectable()
